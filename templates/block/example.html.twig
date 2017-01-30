@@ -1,0 +1,93 @@
+{# An example twig file #}
+
+Setting a variable
+
+{%
+  set foo = bar
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+  ]
+%}
+
+
+
+Printing a variable:
+
+{# <div class="content"><?php print $content; ?></div> #}
+<div class="content">{{ content }}</div>
+<div class="comments">{{ content.comments }}</div>
+
+
+
+Printing a hash key item1
+
+{# <?php print $item['#item']['alt']; ?> #}
+{{ item['#item'].alt }}
+
+{# Assigning a variable: #}
+{# <?php $custom_var = $content->comments; ?> #}
+{% set custom_var = content.comments %}
+
+{# Assigning an array: #}
+{# <?php $args = array('@author' => $author, '@date' => $created); ?> #}
+{% set args = {'@author': author, '@date': created} %}
+
+
+
+Conditions:
+
+{# <?php if ($content->comments): endif; ?> #}
+{% if content.comments %} ... {% endif %}
+
+{# <?php if (!empty($content->comments)): endif; ?> #}
+{% if content.comments is not empty %} ... {% endif %}
+
+{# <?php if (isset($content->comments)): endif; ?> #}
+{% if content.comments is defined %} ... {% endif %}
+
+{# <?php if ($count > 0): endif; ?> #}
+{% if count > 0 %} ... {% else %} ... {% endif %}
+
+
+
+Filters:
+
+{# <?php print check_plain($title); ?> #}
+Twig2: {{ title }}
+
+{# <?php print $title; ?> #}
+{{ title|raw }}
+
+{# <?php print t('Home'); ?> #}
+{{ 'Home'|t }}
+
+{# <?php print t('Welcome, @username', array('@username' => $user->name)); #}
+{{ 'Welcome, @username'|t({ '@username': user.name }) }}
+
+{# <?php echo implode(', ', $usernames); ?> #}
+{{ usernames | join(', ') }}
+{{ usernames | safe_join(', ') }} {# with markup #}
+
+Drupal specific filters: http://bit.ly/2kFyR8a
+Twig native filters: http://bit.ly/2kFkPzB
+
+
+
+Debugging:
+
+{# <?php var_dump(get_defined_vars()); ?> #}
+{{ dump() }}
+
+{# <?php var_dump($title); ?> #}
+{{ dump(title) }}
+
+{# dump only available variable keys #}
+{{ dump(_context|keys) }}
+
+
+{% extends "block.html.twig" %}
+
+  {% block content %}
+    {{ content }}
+  {% endblock %}
