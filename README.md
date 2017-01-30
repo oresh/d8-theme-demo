@@ -26,8 +26,8 @@ Generate theme in drupal console — http://bit.ly/2keNZsR
 
 ## Twig
 
-Quick overview — http://bit.ly/2kFep3A 
-Twig naming convention — http://bit.ly/2kFtMwJ 
+Quick overview — http://bit.ly/2kFep3A
+Twig naming convention — http://bit.ly/2kFtMwJ
 Twig filters — http://bit.ly/2kFkPzB
 Drupal filters — http://bit.ly/2kFyR8a
 Twig funtions — http://bit.ly/2kFk6yv
